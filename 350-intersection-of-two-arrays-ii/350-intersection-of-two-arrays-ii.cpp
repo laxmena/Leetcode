@@ -10,12 +10,14 @@ public:
         }
         for(auto n: nums2) {
             if(freq.find(n) != freq.end()) {
-                result.push_back(n);
-                freq[n]--;
+                if(res.find(n) == res.end()) res[n] = 0;
+                res[n]++; freq[n]--;
                 if(freq[n] == 0) freq.erase(n);
             }
         }
-
+        for(auto& [key, value]: res) {
+            for(int i=0; i<value; i++) result.push_back(key);
+        }
         return result;
     }
 };
