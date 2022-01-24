@@ -1,19 +1,24 @@
 class Solution {
 public:
     int firstUniqChar(string s) {
-        vector<int> mem(26, INT_MIN);
+        int hist[26] = {0};
+        int order[26] = {0};
+                
         for(int i=0; i<s.length(); i++) {
-            int c = s[i] - 'a';
-            if(mem[c] == INT_MIN) mem[c] = i;
-            else if(mem[c] != INT_MAX) mem[c] = INT_MAX;
-        }
-        int idx=INT_MAX;        
-        for(auto n: mem) {
-            if(n != INT_MAX && n != INT_MIN) {
-                idx = min(idx, n);
+            int idx = s[i] - 'a';
+            hist[idx] += 1;
+            if(order[idx] == 0) {
+                order[idx] = i+1;
             }
         }
-        if(idx != INT_MAX) return idx;
-        return -1;
+        
+        int pos = INT_MAX;
+        for(int i=0; i<26; i++) {
+            if(hist[i] == 1) {
+                pos = min(order[i]-1, pos);
+            }
+        }
+        
+        return pos == INT_MAX? -1: pos;
     }
 };
