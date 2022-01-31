@@ -29,9 +29,6 @@ public:
         for(int i=0; i<n; i++) {
             recurse(i, mem, isVisited);
         }
-        for(auto &[key, val]: mem) {
-            cout << key << " ";
-        }
         return mem.size();
     }
 };
