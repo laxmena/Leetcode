@@ -6,7 +6,7 @@ public:
             result[book[0]-1] += book[2];
             result[book[1]] -= book[2];
         }
-        for(int i=1; i<n+1; i++) {
+        for(int i=1; i<n; i++) {
             result[i] += result[i-1];
         }
         result.erase(result.begin()+n);
