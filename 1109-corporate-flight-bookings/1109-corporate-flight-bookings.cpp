@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
         vector<int> result(n+1, 0);
-        for(auto book: bookings) {
+        for(vector<int> book: bookings) {
             result[book[0]-1] += book[2];
             result[book[1]] -= book[2];
         }
