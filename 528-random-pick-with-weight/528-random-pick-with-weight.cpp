@@ -1,28 +1,16 @@
 class Solution {
 public:
     vector<int> prefix;
-    int n;
     Solution(vector<int>& w) {
-        int sum = 0;
-        for(int i=0; i<w.size(); i++) {
-            sum += w[i];
-            prefix.push_back(sum);
-            cout << prefix[prefix.size()-1] << " ";
-        }
-        n = sum;
+        for(int n: w)
+            prefix.push_back(n + (prefix.empty()? 0: prefix.back()));
     }
     
     int pickIndex() {
-        int ridx = rand() % n;
-        for(int i=0; i<prefix.size(); i++) {
-            if(ridx < prefix[i]) return i;
-        }
-        return 0;
+        float ridx = (float) rand() / RAND_MAX;
+        float target = ridx * prefix.back();
+        return upper_bound(begin(prefix), end(prefix), target) - begin(prefix);
     }
+    
+    
 };
-
-/**
- * Your Solution object will be instantiated and called as such:
- * Solution* obj = new Solution(w);
- * int param_1 = obj->pickIndex();
- */
