@@ -1,10 +1,10 @@
 class Solution {
 public:
     int minStartValue(vector<int>& nums) {
-        int minVal = INT_MAX;
+        int minVal = nums[0], n=nums.size();
         int sum = 0;
-        for(int n: nums) {
-            sum += n;
+        for(int i=0; i<n; i++) {
+            sum += nums[i];
             minVal = min(sum, minVal);
         }
         if(minVal > 0) return 1;
