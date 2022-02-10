@@ -9,9 +9,7 @@ public:
             prefix.push_back(sum);
             cout << prefix[prefix.size()-1] << " ";
         }
-        cout << "\n";
         n = sum;
-        cout << "sum: " << n << "\n";
     }
     
     int pickIndex() {
