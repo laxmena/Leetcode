@@ -8,6 +8,6 @@ public:
             minVal = min(sum, minVal);
         }
         if(minVal > 0) return 1;
-        return abs(minVal) + 1;
+        return 1-minVal;
     }
 };
