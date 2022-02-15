@@ -17,7 +17,6 @@ public:
                 r = m-1;
             }
         }
-        cout << "printing";
         return m;
     }
 };
