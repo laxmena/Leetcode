@@ -1,6 +1,6 @@
 class Solution {
 public:
-    map<vector<int>, set<vector<int>>> mem;
+    // map<vector<int>, set<vector<int>>> mem;
     
     set<vector<int>> recurse(vector<int>& arr) {
         set<vector<int>> result;       
@@ -14,7 +14,7 @@ public:
         };
         
         // Check if we have combinations stored in the hash
-        if(mem.find(arr) != mem.end()) return mem[arr];
+        // if(mem.find(arr) != mem.end()) return mem[arr];
         
         // Iterate through each element in array
         // Generate combinations of all remaining elements using recursion
@@ -38,7 +38,7 @@ public:
             arr.insert(arr.begin()+i, num);
         }
         
-        mem[arr] = result;
+        // mem[arr] = result;
         return result;
     }
     vector<vector<int>> permute(vector<int>& nums) {
