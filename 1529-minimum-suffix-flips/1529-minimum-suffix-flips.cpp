@@ -3,7 +3,7 @@ public:
     int minFlips(string target) {
         int cnt = 0;
         char state = '0';
-        for (auto b : target)
+        for (char b : target)
             if (b != state) {
                 state = b;
                 ++cnt;
