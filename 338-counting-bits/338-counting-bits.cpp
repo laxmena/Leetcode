@@ -1,10 +1,13 @@
 class Solution {
 public:
     vector<int> countBits(int n) {
-        vector<int> bits(n+1, 0);
-        for(int x=1; x<=n; x++) {
-            bits[x] = bits[x>>1] + (x&1);
+        vector<int> result(n+1);
+        if(n == 0) return vector<int>(1);
+        
+        for (int i=1; i<=n; i++) {
+            result[i] = result[i >> 1] + (i & 1);
         }
-        return bits;
+        return result;
     }
 };
+
