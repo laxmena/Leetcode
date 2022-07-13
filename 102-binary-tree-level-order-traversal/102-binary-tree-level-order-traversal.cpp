@@ -11,19 +11,20 @@
  */
 class Solution {
 public:
-    void traverse(TreeNode* node, int level, vector<vector<int> > *res) {
+    void recurse(TreeNode* node, vector<vector<int>>& result, int level = 0) {
         if(!node) return;
-        if(level == res->size()) {
-            vector<int> vec;
-            res->push_back(vec);
+        if(result.size() <= level) {
+            vector<int> levelResult;
+            result.push_back(levelResult);
         }
-        (res->at(level)).push_back(node->val);
-        if(node->left) traverse(node->left, level+1, res);
-        if(node->right) traverse(node->right, level+1, res);
+        result[level].push_back(node->val);
+        recurse(node->left, result, level+1);
+        recurse(node->right, result, level+1);
     }
+    
     vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int> > res;
-        traverse(root, 0, &res);
-        return res;
+        vector<vector<int>> result;        
+        recurse(root, result);
+        return result;
     }
 };
