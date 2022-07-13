@@ -11,20 +11,20 @@
  */
 class Solution {
 public:
-    void recurse(TreeNode* node, vector<vector<int>>& result, int level = 0) {
-        if(!node) return;
-        if(result.size() <= level) {
-            vector<int> levelResult;
-            result.push_back(levelResult);
-        }
-        result[level].push_back(node->val);
-        recurse(node->left, result, level+1);
-        recurse(node->right, result, level+1);
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> result;
+        traverse(root, 0, result);
+        return result;
     }
     
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>> result;        
-        recurse(root, result);
-        return result;
+    void traverse(TreeNode* root, int level, vector<vector<int>>& result) {
+        if(!root) return;
+        if(result.size() <= level) {
+            vector<int> v;
+            result.push_back(v);
+        }
+        result[level].push_back(root->val);
+        traverse(root->left, level+1, result);
+        traverse(root->right, level+1, result);
     }
 };
