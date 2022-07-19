@@ -11,25 +11,19 @@
  */
 class Solution {
 public:
-    map<long, long> sums;
-    void traverse(TreeNode* node, vector<long long> prevSums) {
-        if(!node) return;
-        
-        int val = node->val;
-        for(int i=0; i<prevSums.size(); i++) {
-            prevSums[i] += val;
-            sums[prevSums[i]] += 1;
+    int ans=0;
+    int pathSum(TreeNode* root, int sum) {
+        if(root){
+            dfs(root,sum);
+            pathSum(root->left,sum);
+            pathSum(root->right,sum);
         }
-        prevSums.push_back(val);
-        sums[val] += 1;
-        
-        traverse(node->left, prevSums);
-        traverse(node->right, prevSums);
+        return ans;
     }
-    
-    int pathSum(TreeNode* root, int targetSum) {
-        vector<long long> temp;
-        traverse(root, temp);
-        return sums[targetSum];
+    void dfs(TreeNode* root, long long sum){
+        if(!root)return;
+        if(root->val==sum)ans++;
+        dfs(root->left,sum-root->val);
+        dfs(root->right,sum-root->val);
     }
 };
