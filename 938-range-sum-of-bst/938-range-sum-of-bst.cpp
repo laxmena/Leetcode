@@ -14,15 +14,11 @@ public:
     int result = 0, temp;
     int rangeSumBST(TreeNode* root, int low, int high) {
         if(!root) return 0;
+        
         if(root->val >= low && root->val <= high) result += root->val;
-
-        if(root->val > high) 
-            temp = rangeSumBST(root->left, low, high);
-        else if(root->val <= low) temp = rangeSumBST(root->right, low, high);
-        else {
-            temp = rangeSumBST(root->left, low, high);
-            temp = rangeSumBST(root->right, low, high);
-        }
+        
+        if(root->val >= low) temp = rangeSumBST(root->left, low, high);
+        if(root->val < high) temp = rangeSumBST(root->right, low, high);
         
         return result;
     }
