@@ -19,11 +19,11 @@ public:
         set<vector<int>> result;
         if(n == 1 || n == 0) return set<vector<int>>();
         
-        if(isPrime(n)) {
-            result.insert(vector<int>(1, n));
-            saved[n] = result;
-            return result;
-        }
+        // if(isPrime(n)) {
+        //     result.insert(vector<int>(1, n));
+        //     saved[n] = result;
+        //     return result;
+        // }
         
         for(int i=2; i<=sqrt(n); i++) {
             if(n%i == 0) {
@@ -45,6 +45,9 @@ public:
             }
         }
         
+        if(result.size() == 0) {
+            result.insert(vector<int>(1, n));
+        }
         saved[n] = result;
         
         return result;
