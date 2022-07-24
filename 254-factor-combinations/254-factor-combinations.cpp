@@ -48,6 +48,7 @@ public:
         if(result.size() == 0) {
             result.insert(vector<int>(1, n));
         }
+        
         saved[n] = result;
         
         return result;
