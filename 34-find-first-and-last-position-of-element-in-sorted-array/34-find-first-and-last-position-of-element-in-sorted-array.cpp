@@ -1,51 +1,51 @@
 class Solution {
 public:
-    
-    // Start position: left value is not equal to target | target is first element in array
-    // End position: right value is not equal to target | target is last element in array
-    
+    vector<int> searchRange(vector<int>& nums, int target) {
+        vector<int> result(2, -1);
+        if(nums.size() == 0) return result;
+        
+        int n = nums.size();
+        
+        // starting position is where the left value to target is a different value
 
-    vector<int> searchRange(vector<int>& a, int target) {
-        int s = 0, e = a.size()-1;
-        vector<int> ans(2, -1);
-        //first occurrence
-        while(s <= e){
-            int m = s + (e-s)/2;
-            if(a[m] < target)
-                s = m+1;
-            else if(a[m] > target)
-                e = m-1;
-            else{
-                if(m == s || a[m] != a[m-1]){
-                    ans[0] = m;
+        int l=0, r=n-1;
+        while(l <= r) {
+            int m = l + (r-l)/2;
+            if(nums[m] < target) {
+                l = m + 1;
+            } else if(nums[m] > target) {
+                r = m - 1;
+            } else {
+                if(m == l || nums[m] != nums[m-1]) {
+                    result[0] = m;
                     break;
+                } else {
+                    r = m-1;
+                    result[0] = m-1;
                 }
-                else{
-                    e = m-1;
-                    ans[0] = m-1;
+            }
+        }
+        
+        l=0, r=n-1;
+        while(l <= r) {
+            int m = l + (r-l)/2;
+            if(nums[m] < target) {
+                l = m + 1;
+            } else if(nums[m] > target) {
+                r = m - 1;
+            } else {
+                if(m == r || nums[m] != nums[m+1]) {
+                    result[1] = m;
+                    break;
+                } else {
+                    l = m+1;
+                    result[1] = m+1;
                 }
             }
         }
 
-        //last occurrence
-        s = 0, e = a.size()-1;
-        while(s <= e){
-            int m = s + (e-s)/2;
-            if(a[m] < target)
-                s = m+1;
-            else if(a[m] > target)
-                e = m-1;
-            else{
-                if(m == e || a[m] != a[m+1]){
-                    ans[1] = m;
-                    break;
-                }
-                else{
-                    s = m+1;
-                    ans[1] = m+1;
-                }
-            }
-        }
-        return ans; 
+        
+        return result;
     }
 };
+
