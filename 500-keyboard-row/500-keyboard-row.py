@@ -1,21 +1,11 @@
 class Solution:
-    def findWords(self, words: List[str]) -> List[str]:
-        
-        m = {}
-        for (idx, word) in enumerate(["qwertyuiop", "asdfghjkl", "zxcvbnm"]):
-            for ch in word:
-                m[ch] = idx
-        
-        result = []
-        
+    def findWords(self, words):
+        line1, line2, line3 = set('qwertyuiop'), set('asdfghjkl'), set('zxcvbnm')
+        ret = []
         for word in words:
-            default = m[word[0].lower()]
-            result.append(word)
-            for ch in word:
-                if default != m[ch.lower()]:
-                    result.pop()
-                    break
-        
-        return result
+          w = set(word.lower())
+          if w <= line1 or w <= line2 or w <= line3:
+            ret.append(word)
+        return ret
             
                 
