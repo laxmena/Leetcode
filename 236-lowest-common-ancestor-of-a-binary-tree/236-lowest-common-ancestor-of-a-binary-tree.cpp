@@ -16,8 +16,10 @@ public:
         if(root == p || root == q) return root;
         TreeNode* left = lca(root->left, p, q);
         TreeNode* right = lca(root->right, p, q);
-        if(right != NULL && left != NULL) return root;
-        if(right != NULL) return right;
+        if(right != NULL) {
+            if(left != NULL) return root;
+            else return right; 
+        }
         return left;
     }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
