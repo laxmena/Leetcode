@@ -11,14 +11,23 @@
  */
 class Solution {
 public:
-    void flatten(TreeNode* root) {
-        TreeNode *head = nullptr, *curr = root;
-        while (head != root) {
-            if (curr->right == head) curr->right = nullptr;
-            if (curr->left == head) curr->left = nullptr;
-            if (curr->right) curr = curr->right;
-            else if (curr->left) curr = curr->left;
-            else curr->right = head, head = curr, curr = root;
+    TreeNode* flat(TreeNode* node) {
+        if(!node) return NULL;
+        TreeNode *left, *right;
+        left = flat(node->left);
+        node->left = NULL;
+        right = flat(node->right);
+        if(left != NULL) {
+            node->right = left;
+            while(left->right != NULL) left=left->right;
+        } else {
+            left = node;
         }
+        left->right = right;
+        return node;
+    }
+    
+    void flatten(TreeNode* root) {
+        TreeNode* temp = flat(root);
     }
 };
