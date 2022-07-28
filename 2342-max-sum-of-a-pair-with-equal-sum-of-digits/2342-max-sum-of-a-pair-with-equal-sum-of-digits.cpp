@@ -13,7 +13,6 @@ public:
         map<int, pair<int, int>> m;
         for(auto num: nums) {
             int sum = digitSum(num);
-            cout << "Sum: " << sum << "\n";
             if(m.find(sum) == m.end()) {
                 m[sum] = make_pair(INT_MIN, num); //max2, max1            
             } else if(num >= m[sum].second) {
