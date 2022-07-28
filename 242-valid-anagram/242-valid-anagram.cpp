@@ -2,11 +2,11 @@ class Solution {
 public:
     bool isAnagram(string s, string t) {
         int freq[26] = {0};
-        for(auto c: s) freq[c - 'a']++;
-        for(auto c: t) freq[c - 'a']--;
-        for(auto n: freq) {
-            if(n != 0) return false;
-        }
-        return true;
+        for(char& c: s) freq[c-'a']++;
+        for(char& c: t) freq[c-'a']--;
+
+        int sum = 0;
+        for(int n: freq) sum += abs(n);
+        return sum == 0;
     }
 };
