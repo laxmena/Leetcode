@@ -1,7 +1,7 @@
 class Solution {
 public:
     string getPattern(string s) {
-        string p = "";
+        string p;
         map<char, int> m;
         for(char c: s) {
             if(m.find(c) == m.end()) {
