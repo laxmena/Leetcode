@@ -2,11 +2,10 @@ class Solution {
 public:
     string getPattern(string s) {
         string p = "";
-        int counter = 0;
         map<char, int> m;
         for(char c: s) {
             if(m.find(c) == m.end()) {
-                m[c] = counter++;
+                m[c] = m.size();
             }
             p.push_back(m[c]+'a');
         }
