@@ -7,7 +7,7 @@ public:
             if(m.find(c) == m.end()) {
                 m[c] = m.size();
             }
-            p += (m[c]+'a');
+            p.push_back(m[c]+'a');
         }
         return p;
     } 
