@@ -6,7 +6,7 @@ public:
         
         while(n > 1) {
             set<int> temp;
-            for(auto val: result) {
+            for(int val: result) {
                 int digit = val % 10;
                 if((digit - k) >= 0) {
                     temp.insert(val*10 + (digit-k));
