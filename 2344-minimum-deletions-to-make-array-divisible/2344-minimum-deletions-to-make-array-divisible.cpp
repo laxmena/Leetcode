@@ -11,8 +11,6 @@ public:
         map<int, int> freq;
         for(int num: nums) freq[num]++;
         
-        cout << gcdval << "\n";
-        
         int remove = 0;
         if(gcdval == 1) {
             if(freq.find(1) != freq.end()) return 0;
@@ -20,7 +18,6 @@ public:
         }
         
         for(auto const& obj: freq) {
-            cout << obj.first << " " << obj.second << "\n";
             int num = obj.first;
             if(num%gcdval == 0 || gcdval%num==0) return remove;
             else remove += obj.second;
