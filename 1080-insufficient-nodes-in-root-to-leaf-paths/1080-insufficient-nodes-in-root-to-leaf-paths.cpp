@@ -24,11 +24,10 @@ public:
         if(node->left == NULL && right == false) return false;
         if(node->right == NULL && left == false) return false;
 
-        int result = left | right;
         if(!left) node->left = NULL;
         if(!right) node->right = NULL;        
         
-        return result;
+        return left | right;
     } 
     TreeNode* sufficientSubset(TreeNode* root, int limit) {
         limitVal = limit;
