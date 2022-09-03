@@ -21,11 +21,10 @@ public:
         bool right = traverse(node->right, sum+(node->val));
         
         
+        if(node->left == NULL && right == false) return false;
+        if(node->right == NULL && left == false) return false;
+
         int result = left | right;
-        
-        if(node->left == NULL && right == false) result = false;
-        if(node->right == NULL && left == false) result = false;
-           
         if(!left) node->left = NULL;
         if(!right) node->right = NULL;        
         
