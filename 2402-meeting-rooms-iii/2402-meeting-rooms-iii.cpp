@@ -43,13 +43,6 @@ public:
         }
         
         // result: maximum number of time a room is used
-        int result = INT_MIN, room = -1;
-        for(int i=0; i<n; i++) {
-            if(used[i] > result) {
-                result = used[i];
-                room = i;
-            }
-        }
-        return room;
+        return max_element(begin(used), end(used)) - begin(used);
     }
 };
