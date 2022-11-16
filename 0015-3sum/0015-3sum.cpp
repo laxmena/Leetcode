@@ -22,11 +22,7 @@ public:
             while(j < k) {
                 int sum = nums[i] + nums[j] + nums[k];
                 if(sum == 0) {
-                    vector<int> entry;
-                    entry.push_back(nums[i]);
-                    entry.push_back(nums[j]);
-                    entry.push_back(nums[k]);
-                    result.push_back(entry);
+                    result.push_back({nums[i], nums[j], nums[k]});
 
                     int x = nums[j], y = nums[k];
                     if(x == y) break;
