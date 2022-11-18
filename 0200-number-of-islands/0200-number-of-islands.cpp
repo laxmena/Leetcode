@@ -18,9 +18,10 @@ public:
         int m = grid.size(), n = grid[0].size();
         for(int i=0; i<m; i++) {
             for(int j=0; j<n; j++) {
-                if(grid[i][j] != '1') continue;
-                count++;
-                dfs(grid, i, j);
+                if(grid[i][j] == '1') {
+                    count++;
+                    dfs(grid, i, j);                    
+                } 
             }
         }
         return count;
